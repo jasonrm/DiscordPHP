@@ -826,7 +826,7 @@ class Discord
         } else {
             $payload = [
                 'op' => Op::OP_IDENTIFY,
-                'd' => [
+                'd' => array_filter([
                     'token' => $this->token,
                     'properties' => [
                         '$os' => PHP_OS,
@@ -837,7 +837,7 @@ class Discord
                     ],
                     'compress' => true,
                     'intents' => $this->options['intents'],
-                ],
+                ]),
             ];
 
             if (
@@ -1302,7 +1302,7 @@ class Discord
             ->setAllowedTypes('pmChannels', 'bool')
             ->setAllowedTypes('storeMessages', 'bool')
             ->setAllowedTypes('retrieveBans', 'bool')
-            ->setAllowedTypes('intents', ['array', 'int'])
+            ->setAllowedTypes('intents', ['array', 'int', 'null'])
             ->setAllowedTypes('socket_options', 'array');
 
         $options = $resolver->resolve($options);
