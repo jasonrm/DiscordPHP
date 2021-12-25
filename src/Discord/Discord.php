@@ -334,7 +334,7 @@ class Discord
         $this->on('ready', $function);
 
         $this->http = new Http(
-            'Bot '.$this->token,
+            $this->token,
             $this->loop,
             $this->options['logger'],
             new React($this->loop, $options['socket_options'])
